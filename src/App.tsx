@@ -19,10 +19,10 @@ const App = () => {
 	const flag = useRef<boolean>(true);
 	const [routes, setRoutes] = useState<RouteType[]>([]);
 	useEffect(() => {
-		if (flag.current) {
-            flag.current = false;
-            return;
-        }
+		// if (flag.current) {
+        //     flag.current = false;
+        //     return;
+        // }
 		// 在组件初始化时执行的方法
 		const fetchData = async () => {
 			const response = await fetch();
