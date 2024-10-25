@@ -19,10 +19,6 @@ const App = () => {
 	const flag = useRef<boolean>(true);
 	const [routes, setRoutes] = useState<RouteType[]>([]);
 	useEffect(() => {
-		// if (flag.current) {
-        //     flag.current = false;
-        //     return;
-        // }
 		// 在组件初始化时执行的方法
 		const fetchData = async () => {
 			const response = await fetch();
@@ -36,8 +32,12 @@ const App = () => {
 			  setRoutes(fetchedRoutes);
 			  console.log(fetchedRoutes)
 		};
-		fetchData();
-	}, []); // 空数组作为依赖项，确保只在组件挂载时执行一次
+		if (flag.current) {
+			fetchData();
+            flag.current = false;
+            return;
+        }
+	}, [flag.current]); // 空数组作为依赖项，确保只在组件挂载时执行一次
 	
 	return (
 		<UserProvider>
