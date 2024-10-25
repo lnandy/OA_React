@@ -3,7 +3,7 @@ import axios from 'axios';
 const axiosInstance = axios.create({
   //baseURL: 'https://api.example.com', // 替换为你的 API 基础 URL
   //baseURL: 'http://1.94.194.171:8080', // 替换为你的 API 基础 URL
-  baseURL: process.env.PUBLIC_URL+"/mock/",
+  baseURL: `${process.env.PUBLIC_URL}/mock`,
   timeout: 10000, // 请求超时时间
   headers: {
     'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ axiosInstance.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    config.url += ".json";
+    config.url = `${config.url}.json`;
     //http://localhost:3000/mock
     return config;
   },

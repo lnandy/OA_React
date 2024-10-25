@@ -574,7 +574,7 @@ module.exports = function (webpackEnv) {
       ].filter(Boolean),
     },
     plugins: [
-      new CleanWebpackPlugin(), //清理dist文件夹
+      //new CleanWebpackPlugin(), //清理dist文件夹
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
