@@ -1,0 +1,95 @@
+.loginContainer{
+    width: 100%;
+    height: 100%;
+    background: url(./images/bg.jpg) no-repeat center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loginContainer::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: #0e0e0e;
+    opacity: .3;
+    pointer-events: none;
+}
+.loginStage{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.loginContainer form{
+    width: 500px;  
+}
+.loginContainer span{
+    color: #fff !important;
+    font-size: 1rem;
+}
+.loginContainer .ant-input-outlined{
+    color: #fff ;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    height: 50px;
+    border-radius: 30px;
+    text-indent: 10px;
+}
+.loginContainer .ant-input-outlined:hover{
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.8) !important;
+}
+.loginContainer .ant-input-outlined:focus{
+    outline: none;
+    box-shadow: none;
+}
+.loginContainer input{
+    font-size: 1rem !important;
+    text-indent: 10px;
+}
+.loginContainer input::placeholder {
+    color: #fff; /* 设置 placeholder 字体颜色 */
+  }
+  
+  .loginContainer input::-webkit-input-placeholder {
+    color: #fff; /* Chrome, Safari, Opera */
+  }
+  
+  .loginContainer input::-moz-placeholder {
+    color: #fff;;  /* Firefox 19+ */
+  }
+  
+  .loginContainer input:-ms-input-placeholder {
+    color: #fff;;  /* IE 10+ */
+  }
+  
+  .loginContainer input::-ms-input-placeholder {
+    color: #fff;;  /* Microsoft Edge */
+  }
+  .loginContainer .ant-form-item-explain-error{
+    text-indent: 20px;
+    color: #fff !important;
+  }
+.loginContainer .sign{
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    background: #fbceb5 !important;
+    border: 1px solid #fbceb5 !important;
+    color: #000 !important;
+}
+.loginContainer .sign span{
+    color: #000 !important;
+}
