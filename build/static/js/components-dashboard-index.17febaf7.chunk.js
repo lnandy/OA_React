@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[567],{2372:(t,e,p)=>{p.r(e),p.d(e,{default:()=>a});var s=p(579);const a=()=>(0,s.jsx)("div",{children:"tettttttt"})}}]);
+//# sourceMappingURL=components-dashboard-index.17febaf7.chunk.js.map
