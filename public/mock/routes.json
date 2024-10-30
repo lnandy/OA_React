@@ -1,3 +1,92 @@
 [
-    { "id": 1, "path":"dashboard","element": "components/dashboard/","label":"Dashboard"}
+    {
+        "id": 1,
+        "path": "dashboard",
+        "element": "components/dashboard/",
+        "label": "Dashboard",
+        "role": "user,admin"
+    },
+    {
+        "id": 2,
+        "path": "project",
+        "element": "components/project/",
+        "label": "Project",
+        "role": "user,admin"
+    },
+    {
+        "id": 3,
+        "path": "time",
+        "element": "",
+        "label": "Time",
+        "role": "user,admin"
+    },
+    {
+        "id": 3.1,
+        "path": "leave",
+        "element": "components/leave/",
+        "label": "Leave",
+        "parent": "Time",
+        "role": "user,admin"
+    },
+    {
+        "id": 3.2,
+        "path": "timeoff",
+        "element": "components/timeoff/",
+        "label": "Time Off",
+        "parent": "Time",
+        "role": "user,admin"
+    },
+    {
+        "id": 4,
+        "path": "profile",
+        "element": "components/profile/",
+        "label": "Profile",
+        "role": "user,admin"
+    },
+    {
+        "id": 5,
+        "path": "approve",
+        "element": "components/approve/",
+        "label": "Approve",
+        "role": "admin"
+    },
+    {
+        "id": 6,
+        "path": "admin",
+        "element": "",
+        "label": "Admin",
+        "role": "admin"
+    },
+    {
+        "id": 6.1,
+        "path": "user",
+        "element": "components/user/",
+        "label": "User Management",
+        "parent": "Admin",
+        "role": "admin"
+    },
+    {
+        "id": 6.2,
+        "path": "role",
+        "element": "components/role/",
+        "label": "Role Management",
+        "parent": "Admin",
+        "role": "admin"
+    },
+    {
+        "id": 6.3,
+        "path": "menu",
+        "element": "components/menu/",
+        "label": "Menu Management",
+        "parent": "Admin",
+        "role": "admin"
+    },
+    {
+        "id": 6.3,
+        "path": "example",
+        "element": "components/example/",
+        "label": "example Management",
+        "parent": "Admin",
+        "role": "admin"
+    }
 ]

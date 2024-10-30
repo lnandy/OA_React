@@ -1,25 +1,25 @@
-function setSessionStorage(key: string, value: any, expirationInMinutes: number = 120) {
+function setLocalStorage(key: string, value: any, time?: number) {
     const now = new Date();
-    const expirationTime = now.getTime() + expirationInMinutes * 60 * 1000;
+    const expirationTime = time ? now.getTime() + time * 3600 * 1000 : null;
     const item = {
         value: value,
         expiration: expirationTime
     };
-    sessionStorage.setItem(key, JSON.stringify(item));
+    localStorage.setItem(key, JSON.stringify(item));
 }
 
-function getSessionStorage(key: string) {
-    const itemStr = sessionStorage.getItem(key);
+function getLocalStorage(key: string) {
+    const itemStr = localStorage.getItem(key);
     if (!itemStr) {
         return null;
     }
     const item = JSON.parse(itemStr);
     const now = new Date();
-    if (now.getTime() > item.expiration) {
-        sessionStorage.removeItem(key);
+    if (!!item.expiration && now.getTime() > item.expiration) {
+        localStorage.removeItem(key);
         return null;
     }
     return item.value;
 }
 
-export {setSessionStorage,getSessionStorage}
+export { setLocalStorage, getLocalStorage }

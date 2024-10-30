@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/components-role-index.2e0cf63e.chunk.js","mappings":"0IACA,MAMA,EANYA,KAENC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,a","sources":["components/role/index.tsx"],"sourcesContent":["\r\nconst App = () => {\r\n    return (\r\n      <div>role page</div>\r\n    )\r\n  };\r\n  \r\nexport default App;"],"names":["App","_jsx","children"],"sourceRoot":""}

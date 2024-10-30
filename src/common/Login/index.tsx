@@ -1,44 +1,74 @@
 import './login.css'
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { FormProps } from 'antd';
 import { Button, Checkbox, Form, Input, Flex, message } from 'antd';
 import { useUser } from '@/api/user/UserContext';
-import { login } from '@/api/user/Api';
+import { setLocalStorage } from '@/api/storage';
+import { auth, db, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@/api/firebase/firebase';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { useLoading } from '@/common/Loading/loadingContext';
 
 type FieldType = {
-	username?: string;
+	email?: string;
 	password?: string;
 	remember?: string;
 };
-
 
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
 	console.log('Failed:', errorInfo);
 };
 
 const Login: React.FC = () => {
-	console.log("Login page");
 	const navigate = useNavigate();
 	const { setUserInfo } = useUser();
+	const { setLoading } = useLoading();
+	const [isregister, setIsRegister] = useState<boolean>(false);
 	const onFinish: FormProps<FieldType>['onFinish'] = async (formData) => {
 		try {
-			const response = await login(formData);
-			if (response.length === 0) {
-				message.error('UserName or Password not exist.');
-			} else {
-				response.find((item: FieldType) => {
-					return item.username === formData.username;
-				})
-				setUserInfo(response[0]);
-				navigate('/dashboard');
+			if (!!formData.email && !!formData.password) {
+				setLoading(true);
+				if (isregister) {
+					const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+					const user = userCredential.user;
+					await setDoc(doc(db, 'users', user.uid), {
+						email: user.email,
+						role: 'user' // 默认角色为普通用户
+					});
+					setIsRegister(!isregister);
+					message.success('Registration successful!');
+					setLoading(false);
+				} else {
+					const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
+					const user = userCredential.user;
+					const userDoc = await getDoc(doc(db, 'users', user.uid));
+					if (userDoc.exists()) {
+						const userData = userDoc.data();
+						const completeUserData = {
+							uid: user.uid,
+							email: userData.email || '',
+							role: userData.role || '',
+							username: userData.username || ''
+						  };
+						setUserInfo(completeUserData);
+						setLocalStorage("userInfo", userData, 4);
+						setTimeout(() => {
+							navigate('/dashboard');
+							setLoading(false);
+						}, 0);
+					}
+					
+				}
 			}
-			// 处理登录成功后的逻辑，例如保存用户信息或跳转页面
+
 		} catch (err) {
-			message.error('Looks like face some error, please try again.');
+			message.error((err as Error).message);
+			setLoading(false);
 		}
 	};
-
+	const rigister: any = () => {
+		setIsRegister(!isregister);
+	}
 	return (
 		<div className='loginContainer' >
 			<div className="loginStage">
@@ -53,10 +83,10 @@ const Login: React.FC = () => {
 					autoComplete="off"
 				>
 					<Form.Item<FieldType>
-						name="username"
+						name="email"
 						rules={[{ required: true, message: 'Please input your username!' }]}
 					>
-						<Input placeholder="Username" />
+						<Input placeholder="Email" />
 					</Form.Item>
 
 					<Form.Item<FieldType>
@@ -68,7 +98,7 @@ const Login: React.FC = () => {
 
 					<Form.Item>
 						<Button type="primary" htmlType="submit" className="sign">
-							SIGN IN
+							{isregister ? "Register" : "SIGN IN"}
 						</Button>
 					</Form.Item>
 
@@ -83,7 +113,7 @@ const Login: React.FC = () => {
 							<Button color="default" variant="link">
 								Forget
 							</Button>
-							<Button color="default" variant="link">
+							<Button color="default" variant="link" onClick={() => { rigister() }}>
 								Register
 							</Button>
 						</Flex>

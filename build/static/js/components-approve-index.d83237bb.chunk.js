@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[652],{4787:(p,e,a)=>{a.r(e),a.d(e,{default:()=>c});var s=a(579);const c=()=>(0,s.jsx)("div",{children:"approve page"})}}]);
+//# sourceMappingURL=components-approve-index.d83237bb.chunk.js.map

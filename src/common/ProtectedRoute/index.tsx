@@ -1,14 +1,14 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useUser } from '@/api/user/UserContext';
+import { getLocalStorage } from '@/api/storage';
+
 const useAuth = () => {
-  const { userInfo } = useUser();
-  //const userInfo = { username: false }; 
-  return userInfo && userInfo.username;
+	const userInfo = getLocalStorage("userInfo");
+	return userInfo && userInfo.email;
 };
 
 const ProtectedRoute = () => {
-  const isAuth = useAuth();
-  return isAuth ? <Outlet /> : <Navigate to="/login" />;
+	const isAuth = useAuth();
+	return isAuth ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[907],{5028:(e,p,a)=>{a.r(p),a.d(p,{default:()=>c});var s=a(579);const c=()=>(0,s.jsx)("div",{children:"role page"})}}]);
+//# sourceMappingURL=components-role-index.2e0cf63e.chunk.js.map

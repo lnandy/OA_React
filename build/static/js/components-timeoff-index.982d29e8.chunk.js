@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[897],{7190:(e,p,a)=>{a.r(p),a.d(p,{default:()=>c});var s=a(579);const c=()=>(0,s.jsx)("div",{children:"timeoff page"})}}]);
+//# sourceMappingURL=components-timeoff-index.982d29e8.chunk.js.map

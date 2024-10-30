@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[698],{325:(e,a,p)=>{p.r(a),p.d(a,{default:()=>c});var s=p(579);const c=()=>(0,s.jsx)("div",{children:"leave page"})}}]);
+//# sourceMappingURL=components-leave-index.152f5e91.chunk.js.map
